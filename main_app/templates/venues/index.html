@@ -1,8 +1,8 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/venues/venue-index.css' %}"/>
-{% endblock %} 
+<link rel="stylesheet" href="{% static 'css/venues/venue-index.css' %}" />
+{% endblock %}
 {% block content %}
 
 <section class="page-header">
@@ -15,19 +15,18 @@
 
 <section class="card-container">
   {% for venue in venues %}
-    <div class="card">
+  <div class="card">
+    <a href="{% url 'venue-detail' venue.id %}">
       <div class="card-content">
         <div class="card-img-container">
-          <img
-            src="{% static 'images/glowparty.jpg' %}"
-            alt="neon letters that say glow party"
-          />
+          <img src="{% static 'images/glowparty.jpg' %}" alt="neon letters that say glow party" />
         </div>
         <h2 class="card-title">{{ venue.name }}</h2>
         <p>Venue is located at {{ venue.location }}.</p>
         <p><small>{{ venue.description }}</small></p>
       </div>
-    </div>
+    </a>
+  </div>
   {% endfor %}
 </section>
 
