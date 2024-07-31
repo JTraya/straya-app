@@ -46,7 +46,7 @@ body {
   --font-reg: 1.6rem;
   --card-border-radius: 6px;
   background-image: url('https://preview.redd.it/5ynst8kgc0k61.jpg?auto=webp&s=ed828c63bae77fa4ea2271085c6e47e1ea3aa2be');
-  
+
 }
 
 header {
@@ -162,6 +162,22 @@ nav li {
 
 .page-content {
   font-size: var(--font-reg);
+}
+
+#logout-form button {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+#logout-form button:hover {
+  color: var(--link-hover-color);
 }
 
 @media only screen and (min-width: 768px) {

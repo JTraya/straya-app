@@ -44,8 +44,8 @@ def venue_index(request):
     venues = Venue.objects.all()
     return render(request, 'venues/index.html', {'venues': venues})
 
-def event_index(request):
-    return render(request, 'events/index.html', {'events': events})
+# def event_index(request):
+#     return render(request, 'events/index.html', {'events': events})
 
 def signup(request):
     error_message = ''
