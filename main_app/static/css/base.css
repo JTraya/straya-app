@@ -162,6 +162,8 @@ nav li {
 
 .page-content {
   font-size: var(--font-reg);
+  color: rgb(253, 204, 238);
+  background-color: rgba(37, 0, 106, 0.52);
 }
 
 #logout-form button {
