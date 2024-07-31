@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 
 from .models import Venue
@@ -9,6 +10,18 @@ from .models import Venue
 
 class Home(LoginView):
     template_name = 'home.html'
+
+class VenueCreate(CreateView):
+    model = Venue
+    fields = ['name', 'location', 'description']
+
+class VenueUpdate(UpdateView):
+    model = Venue
+    fields = ['name', 'location', 'description']
+
+class VenueDelete(DeleteView):
+    model = Venue
+    success_url = '/venues/'
 
 # def home(request):
 #     return HttpResponse('<h1>Hello from Straya!<h1>')
