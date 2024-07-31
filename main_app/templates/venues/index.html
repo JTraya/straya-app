@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/venues/venue-index.css' %}"/>
+{% endblock %} 
+{% block content %}
+
+<section class="page-header">
+  <h1>venue List</h1>
+  <img src="{% static 'images/glowvector.jpg' %}" alt="a neon glow grid with a neon sunrise" />
+  <!-- <img src="{% static 'images/happy-venue.svg' %}" alt="A happy venue" />
+  <img src="{% static 'images/teacup-venue.svg' %}" alt="A venue in a teacup" />
+  <img src="{% static 'images/venue-in-box.svg' %}" alt="A venue in a box" /> -->
+</section>
+
+<section class="card-container">
+  {% for venue in venues %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+          <img
+            src="{% static 'images/glowparty.jpg' %}"
+            alt="neon letters that say glow party"
+          />
+        </div>
+        <h2 class="card-title">{{ venue.name }}</h2>
+        <p>Venue is located at {{ venue.location }}.</p>
+        <p><small>{{ venue.description }}</small></p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
