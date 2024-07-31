@@ -1,13 +1,18 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/form.css' %}" />
-{% endblock %} 
+{% endblock %}
 {% block content %}
 
 <div class="page-header">
+
+  {% if venue %}
+  <h1>Edit {{ venue.name }}</h1>
+  {% else %}
   <h1>Create a new Venue</h1>
   <img src="{% static 'images/glowvector.jpg' %}" alt="neon grid with a neon sunrise" />
+  {% endif %}
 </div>
 
 <form action="" method="post" class="form-container">
