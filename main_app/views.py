@@ -3,9 +3,10 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
 
-from .models import Venue
+from .models import Venue, Event
 # Create your views here.
 
 class Home(LoginView):
@@ -26,6 +27,24 @@ class VenueUpdate(UpdateView):
 class VenueDelete(DeleteView):
     model = Venue
     success_url = '/venues/'
+
+class EventCreate(CreateView):
+    model = Event
+    fields = ['name', 'producer', 'date_time', 'room_area', 'attendees', 'performances']
+
+class EventList(ListView):
+    model = Event
+
+class EventDetail(DetailView):
+    model = Event
+
+class EventUpdate(UpdateView):
+    model = Event
+    fields = ['name', 'producer', 'date_time', 'room_area', 'attendees', 'performances']
+
+class EventDelete(DeleteView):
+    model = Event
+    success_url = '/events/'
 
 # def home(request):
 #     return HttpResponse('<h1>Hello from Straya!<h1>')
@@ -63,7 +82,16 @@ def venue_index(request):
 
 def venue_detail(request, venue_id):
     venue = Venue.objects.get(id=venue_id)
-    return render(request, 'venues/venue_details.html', {'venue': venue})
+    events_not_in_venue = Event.objects.exclude(id__in = venue.events.all().values_list('id'))
+    return render(request, 'venues/venue_details.html', {'venue': venue, 'events': events_not_in_venue})
+
+def associate_event(request, venue_id, event_id):
+    Venue.objects.get(id=venue_id).events.add(event_id)
+    return redirect('venue-detail', venue_id=venue_id)
+
+def remove_event(request, venue_id, event_id):
+    Venue.objects.get(id=venue_id).events.remove(event_id)
+    return redirect('venue-detail', venue_id=venue_id)
 
 # def event_index(request):
 #     return render(request, 'events/index.html', {'events': events})
