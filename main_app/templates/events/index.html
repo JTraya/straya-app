@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/events/event-index.css' %}"/>
+{% endblock %} 
+{% block content %}
+
+<section class="page-header">
+  <h1>event List</h1>
+  <img src="{% static 'images/glowvector.jpg' %}" alt="a neon glow grid with a neon sunrise" />
+  <!-- <img src="{% static 'images/happy-event.svg' %}" alt="A happy event" />
+  <img src="{% static 'images/teacup-event.svg' %}" alt="A event in a teacup" />
+  <img src="{% static 'images/event-in-box.svg' %}" alt="A event in a box" /> -->
+</section>
+
+<section class="card-container">
+  {% for event in events %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+          <img
+            src="{% static 'images/glowparty.jpg' %}"
+            alt="neon letters that say glow party"
+          />
+        </div>
+        <h2 class="card-title">{{ event.name }}</h2>
+        <p>event is located at {{ event.location }}.</p>
+        <p><small>{{ event.description }}</small></p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

@@ -15,6 +15,10 @@ class VenueCreate(CreateView):
     model = Venue
     fields = ['name', 'location', 'description']
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 class VenueUpdate(UpdateView):
     model = Venue
     fields = ['name', 'location', 'description']
@@ -56,6 +60,10 @@ def about(request):
 def venue_index(request):
     venues = Venue.objects.all()
     return render(request, 'venues/index.html', {'venues': venues})
+
+def venue_detail(request, venue_id):
+    venue = Venue.objects.get(id=venue_id)
+    return render(request, 'venues/venue_details.html', {'venue': venue})
 
 # def event_index(request):
 #     return render(request, 'events/index.html', {'events': events})
