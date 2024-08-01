@@ -45,6 +45,7 @@ body {
   --font-l: 1.8rem;
   --font-reg: 1.6rem;
   --card-border-radius: 6px;
+  overflow: hidden;
   background-image: url('https://preview.redd.it/5ynst8kgc0k61.jpg?auto=webp&s=ed828c63bae77fa4ea2271085c6e47e1ea3aa2be');
 
 }
@@ -79,10 +80,61 @@ nav a {
   color: var(--text-color);
   font-weight: 600;
   font-size: 16px;
+  border-radius: 0.25em;
+  padding: 0.25em 1em;
+  text-shadow: 
+    0 0 .20em #fff7,
+    0 0 .30em var(--nav-bg-ff);
+  box-shadow: 
+    inset 0 0 .5em var(--nav-bg-ff),
+          0 0 .5em var(--nav-bg-ff);
 }
 
-nav a:hover {
+nav a::before {
+  content: "";
+  position: absolute;
+  top: 140%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--nav-bg-ff);
+  transform: 
+    perspective(0.2em)
+    rotateX(10deg)
+    scale(1.3, 0.40);
+  filter: blur(0.5em);
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 100ms linear;
+}
+
+
+nav a::after {
+  content: "";
+  position: absolute;
+  border-radius: 0.75em;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--nav-bg-ff);
+  box-shadow: 0 0 2em var(--nav-bg-ff);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+
+nav a:hover::after {
   color: var(--link-hover-color);
+  opacity: 1;
+}
+
+nav a:hover, nav a:focus {
+  color: white;
+}
+
+nav a:hover::before {
+  opacity: 0.8;
 }
 
 nav ul {
@@ -162,6 +214,8 @@ nav li {
 
 .page-content {
   font-size: var(--font-reg);
+  color: rgb(253, 204, 238);
+  background-color: rgba(37, 0, 106, 0.52);
 }
 
 #logout-form button {
@@ -174,10 +228,59 @@ nav li {
   cursor: pointer;
   padding: 0;
   font-family: inherit;
+  padding: 0.25em 1em;
+  text-shadow: 
+    0 0 .20em #fff7,
+    0 0 .30em var(--nav-bg-ff);
+  box-shadow: 
+    inset 0 0 .5em var(--nav-bg-ff),
+          0 0 .5em var(--nav-bg-ff);
 }
 
-#logout-form button:hover {
+#logout-form button::before {
+  content: "";
+  position: absolute;
+  top: 140%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--nav-bg-ff);
+  transform: 
+    perspective(0.2em)
+    rotateX(10deg)
+    scale(1.3, 0.40);
+  filter: blur(0.5em);
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 100ms linear;
+}
+
+#logout-form button::after {
+  content: "";
+  position: absolute;
+  border-radius: 0.75em;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--nav-bg-ff);
+  box-shadow: 0 0 2em var(--nav-bg-ff);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+
+#logout-form button:hover::after {
   color: var(--link-hover-color);
+  opacity: 1;
+}
+
+#logout-form button:hover, #logout-form button:focus {
+  color: white;
+}
+
+#logout-form button:hover::before {
+  opacity: 0.8;
 }
 
 @media only screen and (min-width: 768px) {
