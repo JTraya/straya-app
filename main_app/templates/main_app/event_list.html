@@ -1,32 +1,32 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/events/venue-index.css' %}"/>
-{% endblock %} 
+<link rel="stylesheet" href="{% static 'css/events/event-list.css' %}" />
+{% endblock %}
 {% block content %}
 
 <section class="page-header">
-  <h1>event List</h1>
+  <h1 style="color: rgba(224, 196, 255, 0.95)">Event List:</h1>
   <img src="{% static 'images/glowvector.jpg' %}" alt="a neon glow grid with a neon sunrise" />
 </section>
 
 <section class="card-container">
   {% for event in event_list %}
-    <div class="card">
-      <div class="card-content">
-        <div class="card-img-container">
-          <img
-            src="{% static 'images/letsparty.png' %}"
-            alt="neon letters that say glow party"
-          />
-        </div>
+  <div class="card">
+    <div class="card-content">
+      <div class="card-img-container">
+        <img src="{% static 'images/letsparty.png' %}" alt="neon letters that say glow party" />
+      </div>
+      <a href="{% url 'event-detail' event.id %}" style="color: rgba(224, 196, 255, 0.95)">
         <h2 class="card-title">{{ event.name }}</h2>
         <h3>Event date is {{ event.date_time }}!</h3>
-        <p>event is located at {{ event.location }}.</p>
+        <p>Event is located at {{ event.room_area }}.</p>
         <p>So far the are {{ event.attendees }} attending the event!</p>
-        <p>If you would like to learn more about the producer {{event.producer}} then send us an email and we will put you in touch!</p>
+        <p>If you would like to learn more about the producer {{event.producer}}, then send us an email and we will put
+          you in touch!</p>
         <p>We are also excited to announce performances by {{ event.performances }}.</p>
         <p><small>{{ event.description }}</small></p>
+      </a>
       </div>
     </div>
   {% endfor %}
