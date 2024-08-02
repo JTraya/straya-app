@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/events/event-detail.css' %}" />
+{% endblock %}
+{% block content %}
+
+
+<div class="card">
+  <div class="event-img">
+    <img src="{% static 'images/glowparty.jpg' %}" alt="colorful neon letters saying glow party" />
+  </div>
+  <div class="card-content">
+    <div class="event-details">
+      <h1>{{ event.name }}</h1>
+      <h2>event is located at {{ event.room_area }}.</h2>
+      <p>{{ event.performances }}</p>
+    </div>
+  </div>
+</div>
+<div class="event-actions">
+  <a class="btn warn" href="{% url "event-update" event.id %}">Edit</a>
+  <a class="btn danger" href="{% url "event-delete" event.id %}">Delete</a>
+</div>
+
+{% endblock %}

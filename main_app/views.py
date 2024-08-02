@@ -74,6 +74,7 @@ def remove_event(request, venue_id, event_id):
     return redirect('venue-detail', venue_id=venue_id)
 
 
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':

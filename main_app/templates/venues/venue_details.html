@@ -1,21 +1,52 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-  <link rel="stylesheet" href="{% static 'css/venues/venue-details.css' %}" />
+<link rel="stylesheet" href="{% static 'css/venues/venue-details.css' %}" />
 {% endblock %}
 {% block content %}
-  <section class="venue-container">
-    <div class="venue-img">
-      <img src="{% static 'images/glowparty.jpg' %}" alt="colorful neon letters saying glow party" />
+<section class="venue-container">
+  <div class="venue-img">
+    <img src="{% static 'images/glowparty.jpg' %}" alt="colorful neon letters saying glow party" />
+  </div>
+  <div class="venue-details">
+    <h1>{{ venue.name }}</h1>
+    <h2>Venue is located at {{ venue.location }}.</h2>
+    <p>{{ venue.description }}</p>
+    <div class="venue-actions">
+      <a class="btn warn" href="{% url "venue-update" venue.id %}">Edit</a>
+      <a class="btn danger" href="{% url "venue-delete" venue.id %}">Delete</a>
     </div>
-    <div class="venue-details">
-      <h1>{{ venue.name }}</h1>
-        <h2>Venue is located at {{ venue.location }}.</h2>
-      <p>{{ venue.description }}</p>
-      <div class="venue-actions">
-        <a class="btn warn" href="{% url "venue-update" venue.id %}">Edit</a>
-        <a class="btn danger" href="{% url "venue-delete" venue.id %}">Delete</a>
+  </div>
+
+
+  <section class="events" style="color: rgba(224, 196, 255, 0.95)">
+    <div class="subsection-title">
+      <h2>Events</h2>
+    </div>
+
+    <!-- displaying a venue's events -->
+    <h3>{{ venue.name }}'s events</h3>
+    <div class="subsection-content">
+      {% if venue.events.count %}
+      {% for event in venue.events.all %}
+      <div class="event-container">
+        <div class="color-block" style="background-color: {{ event.color }}"></div>
+        <a href="{% url 'event-detail' event.id %}">
+          <p>A {{ event.color }} {{ event.name }}</p>
+        </a>
       </div>
+      {% endfor %}
+      {% else %}
+      <p class="no-events">{{venue.name}} doesn't have any events!</p>
+      {% endif %}
     </div>
+
+    <h3>Available events</h3>
+    <div class="subsection-content">
+      <!-- Available events here -->
+    </div>
+  </section>
+
+
 
   {% endblock %}
