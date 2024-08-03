@@ -5,17 +5,17 @@
 {% endblock %}
 {% block content %}
 
-<div class="page-header">
+<div class="page-header" style="color: rgba(224, 196, 255, 0.95)">
 
   {% if event %}
   <h1>Edit {{ event.name }}</h1>
   {% else %}
-  <h1>Create a new event</h1>
+  <h1>Create a new event:</h1>
   <img src="{% static 'images/glowvector.jpg' %}" alt="neon grid with a neon sunrise" />
   {% endif %}
 </div>
 
-<form action="" method="post" class="form-container">
+<form action="" method="post" class="form-container" style="color: rgba(224, 196, 255, 0.95)">
   {% csrf_token %}
   <table>
     {{ form.as_table }}
