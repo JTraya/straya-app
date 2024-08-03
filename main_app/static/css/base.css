@@ -76,6 +76,10 @@ main {
   padding: 0 10px;
 }
 
+h1 {
+  font-size: 5em;
+}
+
 h2 {
   font-size: var(--font-xl);
 }
@@ -95,7 +99,7 @@ nav a {
           0 0 .5em var(--nav-bg-ff);
 }
 
-nav a::before {
+/* nav a::before {
   content: "";
   position: absolute;
   top: 130%;
@@ -111,7 +115,7 @@ nav a::before {
   opacity: 0.15;
   pointer-events: none;
   transition: opacity 100ms linear;
-}
+} */
 
 
 nav a::after {
@@ -227,6 +231,12 @@ nav li {
   background-color: rgba(37, 0, 106, 0.52);
 }
 
+.login {
+  font-size: var(--font-reg);
+  color: rgb(253, 204, 238);
+  background-color: rgba(37, 0, 106, 0.52);
+}
+
 #logout-form button {
   text-decoration: none;
   color: var(--text-color);
@@ -246,7 +256,7 @@ nav li {
           0 0 .5em var(--nav-bg-ff);
 }
 
-#logout-form button::before {
+/* #logout-form button::before {
   content: "";
   position: absolute;
   top: 140%;
@@ -262,7 +272,7 @@ nav li {
   opacity: 0.15;
   pointer-events: none;
   transition: opacity 100ms linear;
-}
+} */
 
 #logout-form button::after {
   content: "";
