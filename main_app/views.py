@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 
 from .models import Venue, Event
+from .forms import EventForm
 # Create your views here.
 
 class Home(LoginView):
@@ -31,8 +32,9 @@ class VenueDelete(LoginRequiredMixin, DeleteView):
     success_url = '/venues/'
 
 class EventCreate(LoginRequiredMixin, CreateView):
+    form_class = EventForm
     model = Event
-    fields = ['name', 'producer', 'date_time', 'room_area', 'attendees', 'performances']
+    # fields = ['name', 'producer', 'date_time', 'room_area', 'attendees', 'performances']
 
 class EventList(LoginRequiredMixin, ListView):
     model = Event
@@ -41,8 +43,9 @@ class EventDetail(LoginRequiredMixin, DetailView):
     model = Event
 
 class EventUpdate(LoginRequiredMixin, UpdateView):
+    form_class = EventForm
     model = Event
-    fields = ['name', 'producer', 'date_time', 'room_area', 'attendees', 'performances']
+    # fields = ['name', 'producer', 'date_time', 'room_area', 'attendees', 'performances']
 
 class EventDelete(LoginRequiredMixin, DeleteView):
     model = Event
