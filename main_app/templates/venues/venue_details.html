@@ -27,8 +27,8 @@
     <!-- displaying a venue's events -->
     <h3>{{ venue.name }}'s events</h3>
     <div class="subsection-content">
-      {% if event_list.count %}
-      {% for event in event_list.all %}
+      {% if venue.events.count %}
+      {% for event in venue.events.all %}
       <div class="event-container">
         <a href="{% url 'event-detail' event.id %}">
           <p>A {{ event.name }}</p>
