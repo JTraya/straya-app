@@ -158,9 +158,10 @@ nav li {
 }
 
 .header-logo-container {
-  margin: auto;
-  padding: 10px 20px 0;
-  max-width: 500px;
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .page-header {
