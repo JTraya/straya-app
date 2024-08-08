@@ -19,6 +19,12 @@ Join us and explore the best nightlife your city has to offer with STRAYA.
 - Create Events
 - Add that Event to a Venue
 
+### Roadmap
+
+- [ ] Comment Feature
+- [ ] Map
+- [ ] Bigger Models
+
 ### Built With
 
 * Django
