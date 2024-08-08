@@ -29,4 +29,4 @@ Join us and explore the best nightlife your city has to offer with STRAYA.
 
 * Django
 * Python
-* SQL
+* PSQL
